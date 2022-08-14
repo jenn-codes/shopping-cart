@@ -56,6 +56,11 @@ body {
   grid-template-columns: repeat(3,1fr);
   grid-auto-flow: row;
   padding: 100px;
+  text-align: center;
+  width: 60%;
+
+  margin: auto;
+  align-content: center;
 }
 
 .image-container {
@@ -73,8 +78,9 @@ body {
 }
 
 .product-card {
-  background-color: white;
   margin: 0px;
+  padding: 5px;
+  background-color: white;
 }
 
 .product-page img {
