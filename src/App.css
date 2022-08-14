@@ -2,6 +2,15 @@ body {
   background-image: url('assets/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
@@ -28,11 +37,11 @@ body {
   background-color: black;
   color: white;
   text-align: center;
-  clear: both;
-  position: relative;
+  position: fixed;
   bottom: 0;
-  margin: 0;
-  padding: 10px;
+  left: 0;
+  margin-bottom: 0;
+
   
 }
 
@@ -66,4 +75,73 @@ body {
 .product-card {
   background-color: white;
   margin: 0px;
+}
+
+.product-page img {
+  width: 50%;
+  margin: auto;
+
+}
+
+.product-page {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: auto;
+  background-color: rgba(250, 235, 215, 0.79);
+}
+
+.product-page button {
+  width: 15%;
+  margin: auto;
+}
+
+.price {
+  font-size: 1.5rem;
+
+}
+
+.shopping-cart, .shipping-info {
+  width: 550px;
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
+  font-size: 1.2rem;
+}
+
+.cart-price, .cart-item-total {
+  text-align: right;
+}
+
+button.removeItem {
+  width: 40%;
+  text-align: center;
+  margin-left: 10px;
+
+}
+
+.subtotal, .total, .shipping {
+  grid-column: 4;
+  text-align: right;
+  font-weight: bold;
+}
+
+.subtotal-label, .shipping-label, .total-label {
+  grid-column: 1;
+}
+
+.total {
+  font-size: 1.2rem;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  width: 100px;
+  margin: auto;
 }

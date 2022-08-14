@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Products from './pages/Products';
-// import Cart from './pages/Cart';
+import Cart from './pages/Cart';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Inventory} from "./components/Inventory";
 import Header from './components/Header';
@@ -18,7 +18,8 @@ function App() {
 
     
   const addToCart = (product) => {
-    const productIndex = cart.findIndex((i) => i.id === product.id)
+
+    let productIndex = cart.findIndex((item) => item.id == product.id)
     if (productIndex !== -1) {
       const newCart = cart.slice();
       newCart[productIndex].quantity++
@@ -26,25 +27,30 @@ function App() {
     } else {
       setCart(cart.concat(product))
     }
+    console.log(cart)
   }
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
-  
+  const resetCart = () => {
+    setCart([]);
+  }
+
+  const removeItem = (item) => {
+    // let itemToRemove = cart.find((element) => element.id === item.id);
+    setCart(cart.filter((element) => element.id !== item.id))
+  }
+
     
   return (
-    <div>
+    <div className='container'>
       <BrowserRouter basename= {process.env.PUBLIC_URL + '/'} >
-      <Header cartLength={cartLength} />
-
-      <Routes>
-
-        <Route exact path="/shop" element={<Products addToCart={addToCart} inventory={inventory}/>} />
-        
-        <Route exact path="/" element={<Home />} />
-      </Routes>
-      <Footer />
+        <Header cartLength={cartLength} />
+        <Routes>
+          <Route exact path="/products/:id" element={<ProductPage addToCart={addToCart} />} />
+          <Route exact path="/shop" element={<Products addToCart={addToCart} inventory={inventory}/>} />
+          <Route exact path="/cart" element={<Cart cart={cart} resetCart={resetCart} addToCart={addToCart} removeItem={removeItem}/>} />
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   )
