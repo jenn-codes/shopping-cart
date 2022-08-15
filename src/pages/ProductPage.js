@@ -21,10 +21,8 @@ const ProductPage = ({addToCart}) => {
             <h3>{product.title}</h3>
             <img className='product-page-img' src={product.source} alt={product.source} />
             <h4>{product.desc}</h4>
-            <div className='checkout'>
-                <span className='price'>{product.price}</span> 
-                <button type='button' onClick={() => handleAdd(product)}>Add To Cart</button>
-            </div>
+            <span className='price'>{product.price}</span> 
+            <button type='button' onClick={() => handleAdd(product)}>Add To Cart</button>
 
         </div>
             
