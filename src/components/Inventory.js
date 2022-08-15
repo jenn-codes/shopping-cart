@@ -46,7 +46,7 @@ export const Inventory = [
             source: pearls,
             id: 104,
             quantity: 1,
-            price: 119.99,
+            price: 99.99,
             desc: 'An elegant necklace for special occasions with quality oyster pearls'
 
         },

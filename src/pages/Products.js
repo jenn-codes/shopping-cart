@@ -14,8 +14,9 @@ const Products = ({addToCart, inventory}) => {
                             <div className='image-container'>
                                 <img className="product-image" src={item.source} alt={item.title}></img>
                             </div>
-                            <h1 className='product-title'>{item.title}</h1>
+                            <h2 className='product-title'>{item.title}</h2>
                         </Link>
+                        <span className="price" >${item.price}</span>
                         <button type="button" className="cartButton" onClick={() => addToCart(item)}>Add to cart</button>
                         
                     </div>

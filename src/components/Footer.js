@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <div>
-            <p className="footer">Jennifer's Jewelry Shop | Providing fine jewelry since 1990</p>
+            <p className="footer">Jenn's Jewelry | Providing fine jewelry since 1990</p>
         </div>
     )
 }
