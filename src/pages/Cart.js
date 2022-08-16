@@ -1,20 +1,23 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import { Link } from "react-router-dom";
 import trash from '../assets/trash.png'
 
 
- const Cart = ({cart, resetCart, removeItem}) => {
+ const Cart = ({cart, resetCart, removeItem, addToCart, decreaseItem}) => {
 
     console.log(cart);
     let message = '';
     let shippingMessage = 'Spend over $100 to get free shipping!'
 
-    if (cart.length < 1) {
-        message = 'The cart is empty. Start shopping!'
-        document.querySelector('button.reset-cart').disabled = 'disabled';
-        document.querySelector('button.checkout').disabled = 'disabled';
-
+    const handleDecrease = (product) => {
+        if (product.quantity === 1) {
+            removeItem(product)
+        } else {
+            decreaseItem(product)
+        }
     }
+
+
 
     let subtotal = cart.map((item) => item.price * item.quantity)
                     .reduce((a,b) => a+b, 0);
@@ -27,6 +30,14 @@ import trash from '../assets/trash.png'
 
     let total = subtotal + shipping;
 
+    
+    window.addEventListener('load', function () {
+        if (cart.length < 1) {
+            message = 'The cart is empty. Start shopping!';
+            document.querySelector('.reset-cart').disabled = 'disabled';
+            document.querySelector('.checkout').disabled = 'disabled';
+    } })
+
     return (
         <div className="shopping-cart">
 
@@ -34,13 +45,15 @@ import trash from '../assets/trash.png'
             {cart.map((item) => {
                 return (
                     <div key={item.id} className='shopping-cart-item'>
+                        <span className='decrease-item' onClick={() => handleDecrease(item)}>-</span>
                         <span className='cart-quantity'>{item.quantity}</span>
+                        <span className='increase-item' onClick={() => addToCart(item)}>+</span>
                         <Link to={`/products/${item.id}`}>
                             <span className='cart-title'>{item.title}</span>
                         </Link>
-                        <span className='cart-price'>{item.price}</span>
-                        <span className='cart-item-total'>{parseFloat(item.price) * parseFloat(item.quantity)}</span>
-                        <button type="button" className="removeItem" onClick={() => removeItem(item)}><img className="trash-icon" src={trash} alt="trash" /></button>                    
+                        <span className='cart-price'>{item.price.toFixed(2)}</span>
+                        <span className='cart-item-total'>{(parseFloat(item.price) * parseFloat(item.quantity)).toFixed(2)}</span>
+                        <button type="button" className="remove-item"  onClick={() => removeItem(item)}><img className="trash-icon" src={trash} alt="trash" /></button>
                     </div>
                 )
             })}
@@ -52,12 +65,12 @@ import trash from '../assets/trash.png'
                 <span className="total-label">TOTAL</span>
                 <span className="total">${total.toFixed(2)}</span>       
             </div>
+
             <span className="cart-message">{message}</span>
             <span className="shipping-message">{shippingMessage}</span>
 
             <button type="button" className="checkout">Checkout</button>
-            <button type="button" className="reset-cart" onClick={resetCart}>Empty Cart</button>
-
+            <button type="button" className="reset-cart" onClick={resetCart}>Reset Cart</button>
         </div>
     )
 }

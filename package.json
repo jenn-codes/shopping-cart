@@ -18,7 +18,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "preinstall": "npx -y only-allow pnpm",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,9 +45,5 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
-  },
-  "engines": {
-        "node": ">=16",
-        "pnpm": ">=3"
-    }
+  }
 }

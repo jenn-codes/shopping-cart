@@ -19,7 +19,7 @@ function App() {
     
   const addToCart = (product) => {
 
-    let productIndex = cart.findIndex((item) => item.id == product.id)
+    let productIndex = cart.findIndex((item) => item.id === product.id)
     if (productIndex !== -1) {
       const newCart = cart.slice();
       newCart[productIndex].quantity++
@@ -27,7 +27,6 @@ function App() {
     } else {
       setCart(cart.concat(product))
     }
-    console.log(cart)
   }
 
   const resetCart = () => {
@@ -39,15 +38,24 @@ function App() {
     setCart(cart.filter((element) => element.id !== item.id))
   }
 
+  const decreaseItem = (product) => {
+    let productIndex = cart.findIndex((item) => item.id === product.id)
+    const newCart = cart.slice();
+    newCart[productIndex].quantity--;
+    setCart(newCart)
+  }
+
     
+
+
   return (
     <div className='container'>
       <BrowserRouter basename= {process.env.PUBLIC_URL + '/'} >
         <Header cartLength={cartLength} />
         <Routes>
-          <Route exact path="/products/:id" element={<ProductPage addToCart={addToCart} />} />
+          <Route exact path="/products/:id" element={<ProductPage cart={cart} addToCart={addToCart} />} />
           <Route exact path="/shop" element={<Products addToCart={addToCart} inventory={inventory}/>} />
-          <Route exact path="/cart" element={<Cart cart={cart} resetCart={resetCart} addToCart={addToCart} removeItem={removeItem}/>} />
+          <Route exact path="/cart" element={<Cart cart={cart} resetCart={resetCart} addToCart={addToCart} decreaseItem={decreaseItem} removeItem={removeItem}/>} />
           <Route exact path="/" element={<Home />} />
         </Routes>
         <Footer />
