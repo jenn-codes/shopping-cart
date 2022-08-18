@@ -12,16 +12,18 @@ const ProductPage = ({addToCart, cart}) => {
 
     const params = useParams();
     const productId = params.id;
-    let product = Inventory.filter(item => item.id === productId)
+    console.log(typeof(productId))
+    console.log(typeof(params.id))
+    let product = Inventory.filter(item => parseInt(item.id) === parseInt(productId))
     product = product[0]
-
+    
+    
     let existsInCart = cart.filter((item) => item.id === product.id)[0]
     let cartQuantity
     if (existsInCart) {
         cartQuantity = existsInCart.quantity
     }
 
-    console.log(cartQuantity)
 
         
     return (

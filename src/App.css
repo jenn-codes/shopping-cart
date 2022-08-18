@@ -359,3 +359,23 @@ button.product-page-button {
   cursor: pointer;
   font-size: 1.4rem;
 }
+
+
+#filterCategory, #filterPrice {
+  background-color: #00000087;
+  padding: 8px;
+  font-size: 1.1rem;
+  color: rgb(218, 215, 215);
+  text-align: left;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.filters {
+  width: 30%;
+  position: relative;
+  left: 55%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}

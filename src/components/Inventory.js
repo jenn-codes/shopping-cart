@@ -12,6 +12,7 @@ export const Inventory = [
             id: 100,
             quantity: 1,
             price: 49.99,
+            cat: 'necklace',
             desc: 'An exquisite beautiful necklace with a stunning blue tourmaline gemstone'
         },
         {
@@ -20,6 +21,7 @@ export const Inventory = [
             id: 101,
             quantity: 1,
             price: 24.99,
+            cat: 'ring',
             desc: 'A gorgeous set of rings embedded with topaz and diamond'
 
         },
@@ -29,6 +31,7 @@ export const Inventory = [
             id: 102,
             quantity: 1,
             price: 799.99,
+            cat: 'earrings',
             desc: 'An impressive set of platinum earrings with 2ct worth of high-clarity diamonds'
 
         },
@@ -38,6 +41,7 @@ export const Inventory = [
             id: 103,
             quantity: 1,
             price: 79.99,
+            cat: 'ring',
             desc: 'A stunning gold ring with a statement pink tourmaline gemstone'
 
         },
@@ -47,6 +51,7 @@ export const Inventory = [
             id: 104,
             quantity: 1,
             price: 99.99,
+            cat: 'necklace',
             desc: 'An elegant necklace for special occasions with quality oyster pearls'
 
         },
@@ -55,7 +60,8 @@ export const Inventory = [
             source: hoops,
             id: 105,
             quantity: 1,
-            price: 29.99,
+            price: 29.99,            
+            cat: 'earrings',
             desc: 'The perfect everyday hoop earrings made of 18kt gold'
 
         },

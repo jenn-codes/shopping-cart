@@ -5,6 +5,7 @@ import trash from '../assets/trash.png'
 
  const Cart = ({cart, resetCart, removeItem, addToCart, decreaseItem}) => {
 
+
     console.log(cart);
     let message = '';
     let shippingMessage = 'Spend over $100 to get free shipping!'
@@ -37,6 +38,9 @@ import trash from '../assets/trash.png'
             document.querySelector('.reset-cart').disabled = 'disabled';
             document.querySelector('.checkout').disabled = 'disabled';
     } })
+
+
+
 
     return (
         <div className="shopping-cart">
@@ -76,3 +80,4 @@ import trash from '../assets/trash.png'
 }
 
 export default Cart
+
